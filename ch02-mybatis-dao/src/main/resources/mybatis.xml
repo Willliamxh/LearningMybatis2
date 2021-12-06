@@ -7,7 +7,7 @@
     <!--settings：控制mybatis全局行为-->
     <settings>
         <!--设置mybatis输出日志-->
-        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
     <!--环境配置： 数据库的连接信息
@@ -35,7 +35,8 @@
                 <!--数据库的驱动类名-->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <!--连接数据库的url字符串-->
-                <property name="url" value="jdbc:mysql://localhost:3306/springdb?useSSL=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/springdb?useSSL=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
                 <!--访问数据库的用户名-->
                 <property name="username" value="root"/>
                 <!--密码-->
