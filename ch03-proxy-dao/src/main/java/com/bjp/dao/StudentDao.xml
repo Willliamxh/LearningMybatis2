@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjp.dao.StudentDao"><!--这边是接口的全限定名称-->
+
+    <!--id 是对应的namespace中的方法名-->
+    <select id="selectStudents" resultType="com.bjp.domain.Student"><!--这边还有别名可以用-->
+        select * from springdb.student order by id;
+   </select>
+
+    <!--插入操作-->
+    <insert id="insertStudent" >
+        insert into springdb.student values (#{id},#{name},#{email},#{age});
+    </insert>
+
+
+</mapper>
