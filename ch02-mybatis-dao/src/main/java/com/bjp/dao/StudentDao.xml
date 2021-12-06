@@ -10,5 +10,10 @@
         select * from springdb.student order by id;
    </select>
 
+    <!--插入操作-->
+    <insert id="insertStudent" >
+        insert into springdb.student values (#{id},#{name},#{email},#{age});
+    </insert>
+
 
 </mapper>
