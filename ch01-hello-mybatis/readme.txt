@@ -10,3 +10,14 @@ cho1-hello-mybatis:第一个入门的mybatis例子
 
 7.创建使用mybatis类，
 通过mybatis访问数据库
+
+总结一下ch01的mybatis整个步骤：
+1.pojo类
+2.定义对应的mapper接口（但是在ch01中接口并没有被使用）
+3.定义对应的mybatis.xml配置信息,放在resources中
+4.使用Resources类去获取对应的配置信息
+5.使用SqlSessionFactoryBuilder去get resource得到的配置信息，并且建立SqlSessionFactory
+6.使用SqlSessionFactory构建SqlSession
+7.使用SqlSession去获取对应的mapper文件中的sql坐标， //6.【重要】指定要执行的sql语句的标识。sql映射文件中的namespace + '.' +标签的id值
+8.执行 提交 关闭
+

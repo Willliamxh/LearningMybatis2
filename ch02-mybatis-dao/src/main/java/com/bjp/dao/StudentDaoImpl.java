@@ -31,6 +31,7 @@ public class StudentDaoImpl implements StudentDao{
         int insert = sqlSession.insert(sqlId,student);
         sqlSession.commit();
         sqlSession.close();
+
         return insert;
     }
 }
