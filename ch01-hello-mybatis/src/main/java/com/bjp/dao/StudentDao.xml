@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="">
+<mapper namespace="com.bjp.dao.StudentDao">
     <!--
     select:表示查询操作。
     id: 你要执行的sql语法的唯一标识， mybatis会使用这个id的值来找到要执行的sql语句
@@ -18,6 +18,10 @@
         select * from springdb.student;
    </select>
 
+    <!--插入操作-->
+    <insert id="insertStudent" >
+        insert into springdb.student values (#{id},#{name},#{email},#{age});
+    </insert>
 
 
 </mapper>
