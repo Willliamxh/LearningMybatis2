@@ -111,8 +111,9 @@ mybatis
 
 
 第三章：
-  1. 动态代理： 使用SqlSession.getMapper(dao接口.class) 获取这个dao接口的对象
-  2. 传入参数： 从java代码中把数据传入到mapper文件的sql语句中。
+  1. 动态代理： 使用SqlSession.getMapper(dao接口.class) 获取这个dao接口的对象。
+  演进步骤：不用接口类也能实现（ch01），传统的实现接口（ch02）,使用getMapper动态代理生成对应的daoImpl对象（ch03）
+  2. 传入参数： 从java代码中把数据传入到mapper文件的sql语句中(什么是参数，参数就是我们通过java传给mapper里面的那些东西，比如说我们需要加个where id=1 这个1 就是参数)。
      1）parameterType ： 写在mapper文件中的 一个属性。 表示dao接口中方法的参数的数据类型。
 	     例如StudentDao接口
 		  public Student  selectStudentById(Integer id) 
