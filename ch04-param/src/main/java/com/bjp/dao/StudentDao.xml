@@ -39,6 +39,11 @@
         select id, name, email, age from springdb.student where id=#{studentId};
    </select>
 
+    <select id="selectMultiParam" resultType="com.bjp.domain.Student">
+        select id, name, email, age from springdb.student where name=#{myname} or age=#{myage};
+    </select>
+
+
 
 
 

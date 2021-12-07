@@ -17,6 +17,12 @@ public interface StudentDao {
      */
     public Student selectStudentById(Integer id);
 
+    /**
+     * 多个参数： 命名参数，在形参定义的前面加入 @Param("自定义参数名称")
+     */
+    List<Student> selectMultiParam(@Param("myname") String name,
+                                   @Param("myage") Integer age);
+
 
 
 

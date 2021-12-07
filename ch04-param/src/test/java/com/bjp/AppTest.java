@@ -26,7 +26,15 @@ public class AppTest
         //调用dao的方法，执行数据库的操作
         Student student1 = dao.selectStudentById(2);
         System.out.println(student1);
+    }
 
+    @Test
+    public void testSelectParam(){
+        SqlSession sqlSession= MybatisUtils.getSqlSession();
+        //com.sun.proxy.$Proxy2
+        StudentDao dao=sqlSession.getMapper(StudentDao.class);
+        List<Student> studentList = dao.selectMultiParam("xuhan", 22);
+        studentList.forEach(student -> System.out.println(student));
     }
 
 
