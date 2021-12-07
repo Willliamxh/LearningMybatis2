@@ -1,6 +1,7 @@
 package com.bjp.dao;
 
 import com.bjp.domain.Student;
+import com.bjp.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -22,6 +23,18 @@ public interface StudentDao {
      */
     List<Student> selectMultiParam(@Param("myname") String name,
                                    @Param("myage") Integer age);
+
+
+    /**
+     * 多个参数，使用java对象作为接口中方法的参数
+     */
+    List<Student> selectMultiObject(QueryParam param);
+
+    /*
+    * 我也可以使用 Student作为vo对象来进行参数传递
+    * */
+    List<Student> selectMultiStudent(Student student);
+
 
 
 

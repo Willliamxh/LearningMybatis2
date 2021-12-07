@@ -43,6 +43,33 @@
         select id, name, email, age from springdb.student where name=#{myname} or age=#{myage};
     </select>
 
+    <!--多个参数， 使用java对象的属性值，作为参数实际值
+        使用对象语法： #{属性名,javaType=类型名称,jdbcType=数据类型} 很少用。
+                    javaType:指java中的属性数据类型。
+                    jdbcType:在数据库中的数据类型。
+                    例如： #{paramName,javaType=java.lang.String,jdbcType=VARCHAR}
+
+        我们使用的简化方式： #{属性名}  ，javaType, jdbcType的值mybatis反射能获取。不用提供
+
+    -->
+    <!--<select id="selectMultiObject" resultType="com.bjpowernode.domain.Student">-->
+    <!--       select id,name, email,age from springdb.student where-->
+    <!--        name=#{paramName,javaType=java.lang.String,jdbcType=VARCHAR}-->
+    <!--        or age=#{paramAge,javaType=java.lang.Integer,jdbcType=INTEGER}-->
+    <!-- </select>-->
+
+    <select id="selectMultiObject" resultType="com.bjp.domain.Student">
+        select id,name, email,age from springdb.student where
+            name=#{paramName}   or age=#{paramAge}
+    </select>
+
+    <select id="selectMultiStudent" resultType="com.bjp.domain.Student">
+        select id,name, email,age from springdb.student where
+            name=#{name}   or age=#{age}
+    </select>
+
+
+
 
 
 
