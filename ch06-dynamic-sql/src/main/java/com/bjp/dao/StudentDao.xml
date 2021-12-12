@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjp.dao.StudentDao"><!--这边是接口的全限定名称-->
+
+    <!--&lt;!&ndash;定义sql片段&ndash;&gt;-->
+    <!--<sql id="studentSql">-->
+    <!--    select id,name, age, email from springdb.student-->
+    <!--</sql>-->
+
+    <!--<sql id="studentSqlOne">-->
+    <!--    id,name, age, email-->
+    <!--</sql>-->
+    <!-- if
+         <if:test="使用参数java对象的属性值作为判断条件，语法 属性=XXX值">
+    -->
+    <select id="selectStudentIf" resultType="com.bjp.domain.Student">
+        select id,name, age, email from springdb.student
+        where id>0
+        <if test="name !=null and name !='' ">
+             and name = #{name}
+        </if>
+        <if test="age > 0">
+            and age > #{age}
+        </if>
+    </select>
+
+
+</mapper>
