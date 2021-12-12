@@ -18,14 +18,56 @@
     -->
     <select id="selectStudentIf" resultType="com.bjp.domain.Student">
         select id,name, age, email from springdb.student
-        where
+        where id>0
         <if test="name !=null and name !='' ">
-             name = #{name}
+             and name = #{name}
         </if>
         <if test="age > 0">
             and age > #{age}
         </if>
     </select>
+
+    <!--
+     where: <where> <if> <if>...</where>
+    -->
+    <select id="selectStudentWhere" resultType="com.bjp.domain.Student">
+        select id,name, age, email from springdb.student
+        <where>
+            <if test="name !=null and name !='' ">
+                name = #{name}
+            </if>
+            <if test="age > 0">
+                or age > #{age}
+            </if>
+        </where>
+    </select>
+
+
+
+    <!--foreach使用1 ， List<Integer>-->
+    <select id="selectForeachOne" resultType="com.bjp.domain.Student">
+        select * from springdb.student where id in
+        <foreach collection="list" item="myid" open="(" close=")" separator=",">
+            #{myid}
+        </foreach>
+
+    </select>
+
+    <select id="selectForeachTwo" resultType="com.bjp.domain.Student">
+        select * from springdb.student where id in
+        <foreach collection="list" item="stu" open="("  close=")" separator=",">
+                 #{stu.id}
+        </foreach>
+
+    </select>
+
+    <!--<select id="selectForeachTwo" resultType="com.bjp.domain.Student">-->
+    <!--    <include refid="studentSql" />  where id in (-->
+    <!--    <foreach collection="list" item="stu" >-->
+    <!--        #{stu.id},-->
+    <!--    </foreach>-->
+    <!--    -1 )-->
+    <!--</select>-->
 
 
 </mapper>
