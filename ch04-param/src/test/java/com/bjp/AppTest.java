@@ -9,7 +9,9 @@ import com.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -63,6 +65,51 @@ public class AppTest
         student.setName("xuhan");
         student.setAge(22);
         List<Student> students = dao.selectMultiStudent(student);
+
+        for(Student stu: students){
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testSelectMultiStuPosition(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectMultiPosition("xuhan",22);
+
+        for(Student stu: students){
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testSelectMultiByMap(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("myname","xuhan");
+        data.put("age1",28);
+
+        List<Student> students = dao.selectMultiByMap(data);
+
+        for(Student stu: students){
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectUse$Order(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<Student> students = dao.selectUse$Order("age");
 
         for(Student stu: students){
             System.out.println("学生="+stu);

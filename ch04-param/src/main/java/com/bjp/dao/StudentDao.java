@@ -5,6 +5,7 @@ import com.bjp.vo.QueryParam;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author Willam_xh
@@ -34,6 +35,28 @@ public interface StudentDao {
     * 我也可以使用 Student作为vo对象来进行参数传递
     * */
     List<Student> selectMultiStudent(Student student);
+
+
+    /**
+     * 多个参数-简单类型的，按位置传值，
+     * mybatis.3.4之前，使用 #{0} ，#{1}
+     * mybatis。3.4之后 ，使用 #{arg0} ,#{arg1}
+     */
+    List<Student> selectMultiPosition( String name,Integer age);
+
+    /**
+     * 多个参数，使用Map存放多个值
+     */
+    List<Student> selectMultiByMap(Map<String,Object> map);
+
+
+
+    List<Student> selectUse$(@Param("myname") String name);
+
+    List<Student> selectUse$Order(@Param("colName") String colName);
+
+
+
 
 
 
