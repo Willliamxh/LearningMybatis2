@@ -84,6 +84,16 @@
         select id as stuid ,name as stuname, email as stuemail , age stuage from springdb.student
     </select>
 
+    <!--第一种 like ， java代码指定 like的内容-->
+    <select id="selectLikeOne" resultType="com.bjp.domain.Student">
+        select id,name,email,age from springdb.student where name like #{name}
+    </select>
+
+    <!--&lt;!&ndash;第二种方式：在mapper文件中拼接 like的内容&ndash;&gt;-->
+    <!--<select id="selectLikeTwo" resultType="com.bjp.domain.Student">-->
+    <!--    select id,name,email,age from springdb.student where name  like "%" #{name} "%"-->
+    <!--</select>-->
+
 
 
 

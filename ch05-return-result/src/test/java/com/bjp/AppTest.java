@@ -116,6 +116,21 @@ public class AppTest
         sqlSession.close();
     }
 
+    @Test
+    public void testSelectLikeOne(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        //准备好like的内容
+        String name = "%xu%";
+        List<Student> students = dao.selectLikeOne(name);
+
+        for(Student stu: students){
+            System.out.println("#######学生="+stu);
+        }
+        sqlSession.close();
+    }
+
 
 
 
