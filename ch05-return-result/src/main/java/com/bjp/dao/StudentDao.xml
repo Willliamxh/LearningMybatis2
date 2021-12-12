@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjp.dao.StudentDao"><!--这边是接口的全限定名称-->
+
+    <select id="selectStudentById" parameterType="java.lang.Integer" resultType="com.bjp.domain.Student"><!--这边还有别名可以用-->
+        select id, name, email, age from springdb.student where id=#{studentId};
+   </select>
+
+    <!--是mybatis把这些个student对象放在了list对象之中-->
+    <!--这边也用到了别名-->
+    <select id="selectMultiParam" resultType="stu">
+        select id, name, email, age from springdb.student where name=#{myname} or age=#{myage};
+    </select>
+
+    <select id="selectStudentReturnViewStudent" resultType="vstu">
+        select id, name, email, age from springdb.student where id=#{sid} ;
+    </select>
+
+
+    <!--sql执行后返回一行一列-->
+    <!--<select id="countStudent" resultType="int">-->
+    <select id="countStudent" resultType="java.lang.Integer">
+        select count(*) from springdb.student
+    </select>
+
+    <!--返回Map
+       1）列名是map的key， 列值是map的value
+       2)只能最多返回一行记录。多余一行是错误
+   -->
+    <select id="selectMapById" resultType="java.util.HashMap">
+        select id,name,email from springdb.student where id=#{stuid}
+    </select>
+
+
+    <!--使用resultMap
+        1)先定义resultMap
+        2)在select标签，使用resultMap来引用1定义的。
+    -->
+
+    <!--定义resultMap
+        id:自定义名称，表示你定义的这个resultMap
+        type：java类型的全限定名称
+    -->
+    <resultMap id="studentMap" type="com.bjp.domain.Student">
+        <!--列名和java属性的关系-->
+        <!--注解列，使用id标签
+            column :列名
+            property:java类型的属性名
+        -->
+        <id column="id" property="id" />
+        <!--非主键列，使用result-->
+        <result column="name" property="name" />
+        <result column="email" property="email" />
+        <result column="age" property="age" />
+
+    </resultMap>
+
+    <select id="selectAllStudents" resultMap="studentMap">
+        select id,name, email , age from springdb.student
+    </select>
+
+
+
+</mapper>
