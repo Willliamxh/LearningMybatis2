@@ -62,6 +62,29 @@
         select id,name, email , age from springdb.student
     </select>
 
+    <resultMap id="myStudentMap" type="com.bjp.domain.MyStudent">
+        <!--列名和java属性的关系-->
+
+        <id column="id" property="stuid" />
+        <!--非主键列，使用result-->
+        <result column="name" property="stuname" />
+        <result column="email" property="stuemail" />
+        <result column="age" property="stuage" />
+
+    </resultMap>
+    <!--列名和属性名不一样:第一种方式-->
+    <select id="selectMyStudent" resultMap="myStudentMap">
+        select id,name, email , age from springdb.student
+    </select>
+
+    <!--列名和属性名不一样：第二种方式
+       resultType的默认原则是 同名的列值赋值给同名的属性， 使用列别名(java对象的属性名)
+    -->
+    <select id="selectDiffColProperty" resultType="com.bjp.domain.MyStudent">
+        select id as stuid ,name as stuname, email as stuemail , age stuage from springdb.student
+    </select>
+
+
 
 
 </mapper>

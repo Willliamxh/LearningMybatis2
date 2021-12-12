@@ -3,6 +3,7 @@ package com.bjp;
 import static org.junit.Assert.assertTrue;
 
 import com.bjp.dao.StudentDao;
+import com.bjp.domain.MyStudent;
 import com.bjp.domain.Student;
 import com.bjp.vo.QueryParam;
 import com.bjp.vo.ViewStudent;
@@ -87,6 +88,34 @@ public class AppTest
         }
         sqlSession.close();
     }
+
+    @Test
+    public void testSelectAllStudents2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<MyStudent> students = dao.selectMyStudent();
+
+        for(MyStudent stu: students){
+            System.out.println("学生="+stu);
+        }
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testSelectDiffColProperty(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao = sqlSession.getMapper(StudentDao.class);
+
+        List<MyStudent> students = dao.selectDiffColProperty();
+
+        for(MyStudent stu: students){
+            System.out.println("#######学生="+stu);
+        }
+        sqlSession.close();
+    }
+
 
 
 

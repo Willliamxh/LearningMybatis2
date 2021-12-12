@@ -1,5 +1,6 @@
 package com.bjp.dao;
 
+import com.bjp.domain.MyStudent;
 import com.bjp.domain.Student;
 import com.bjp.vo.QueryParam;
 import com.bjp.vo.ViewStudent;
@@ -38,6 +39,17 @@ public interface StudentDao {
      *  使用resultMap定义映射关系
      * */
     List<Student> selectAllStudents();
+
+
+    List<MyStudent> selectMyStudent();
+
+    List<MyStudent> selectDiffColProperty();
+
+    /*第一种模糊查询， 在java代码指定 like的内容*/
+    List<Student> selectLikeOne(String name);
+
+    /*name就是李值， 在mapper中拼接 like  "%" 李 "%" */
+    List<Student> selectLikeTwo(String name);
 
 
 }
