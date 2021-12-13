@@ -69,5 +69,11 @@
     <!--    -1 )-->
     <!--</select>-->
 
+    <!--查询所有-->
+    <select id="selectAll" resultType="com.bjp.domain.Student">
+        select * from springdb.student order by id
+    </select>
+
+
 
 </mapper>

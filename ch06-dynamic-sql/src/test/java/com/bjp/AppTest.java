@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import com.bjp.dao.StudentDao;
 import com.bjp.domain.MyStudent;
 import com.bjp.domain.Student;
+import com.github.pagehelper.PageHelper;
 import com.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -118,6 +119,22 @@ public class AppTest
             System.out.println("foreach--two ==="+stu);
         }
     }
+
+    @Test
+    public void testSelectAllPageHelper(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentDao dao  =  sqlSession.getMapper(StudentDao.class);
+        //加入PageHelper的方法，分页
+        // pageNum: 第几页， 从1开始
+        // pageSize: 一页中有多少行数据
+        PageHelper.startPage(1,3);
+        List<Student> students = dao.selectAll();
+        for(Student stu:students){
+            System.out.println("foreach--one ==="+stu);
+        }
+    }
+
+
 
 
 
