@@ -16,7 +16,7 @@
     <!-- if
          <if:test="使用参数java对象的属性值作为判断条件，语法 属性=XXX值">
     -->
-    <select id="selectStudentIf" resultType="com.bjp.domain.Student">
+    <select id="selectStudentIf" resultType="stu">
         select id,name, age, email from springdb.student
         where id>0
         <if test="name !=null and name !='' ">

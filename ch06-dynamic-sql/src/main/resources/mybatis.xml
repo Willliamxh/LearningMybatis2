@@ -21,6 +21,11 @@
             alias:别名（短小，容易记忆的）
         -->
         <typeAlias type="com.bjp.domain.Student" alias="stu" />
+        <!--
+        StudentDao.xml里面
+        resultType="com.bjp.domain.Student"
+        可以替换成resultType="stu"
+        -->
         <typeAlias type="com.bjp.vo.ViewStudent" alias="vstu" />
 
         <!--
